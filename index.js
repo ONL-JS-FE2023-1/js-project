@@ -1,40 +1,39 @@
-let box1 = 1 + 2;
+/* Перетворення типу даних (Приведення) */
+// явне
+// неявне
+
+let box1 = 6 - '1'; // неявне перетворення типів
 console.log(box1);
-let box2 = 2 - 1;
-console.log(box2);
-let box3 = 2 * 2;
-console.log(box3);
-let box4 = 6 / 3;
-console.log(box4);
 
-let box5 = 0.1 + 0.2;
-console.log(box5);
+let thisIsNumber = Number('45'); // явне перетворювання
+console.log(thisIsNumber);
+let thisIsNumber2 = '45' - 1; // неявне (автоматичне)
+console.log(thisIsNumber2);
 
-let box10 = box1 + box2 * box3 - box4 / box5;
-console.log(box10);
-
-let num1 = 1 - 'test';
-console.log(num1);
-
-let notAllowed = 5 / 0;
-console.log(notAllowed);
-let divToInf = 5 / Infinity;
-console.log(divToInf);
+let thisIsNumber3 = Number('55') - 5; // явне
+console.log(thisIsNumber3);
 
 
-/* Конкатенація
-
-Складати числа
-Зклеюємо строки (конкатенація)
-
+/*
+Boolean автоматично приводиться до типу Number
+true = 1
+false = 0
 */
 
-let newLine = 'Hello' + ' world';
-console.log(newLine);
+/* String */
 
-newLine = 5 + 'Hello';
-console.log(newLine);
+let str = String(45);
+console.log(str);
 
-let box15 = 1 + 1;
-box15 = 1 + '1';
-console.log(box15);
+let str2 = null + 'TEST'; // неявне перетворення
+console.log(str2);
+
+let str3 = String(null) + 'TEST'; // явне перетворення
+console.log(str3);
+
+let notANumber = 2 * 'Hello';
+console.log(notANumber); // NaN => Not-a-Number
+
+/* Typeof */
+let box = true;
+console.log(typeof thisIsNumber);
