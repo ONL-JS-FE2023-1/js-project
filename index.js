@@ -1,12 +1,9 @@
-// - || (або)
+// !==
 
-// if (логічна_змінна_1 || логічна_змінна_2) { ... }
+const number = 1;
 
-const isWeekend = true;
-const isHoliday = false;
-
-if (isWeekend || isHoliday) {
-    console.log('Це чудовий час для відпочинку!');
+if(number !== 5) {
+    console.log('Число не дорівнює 5');
 } else {
-    console.log('Треба працювати');
+    console.log('Число дорівнює 5');
 }
