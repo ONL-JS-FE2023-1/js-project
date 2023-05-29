@@ -1,4 +1,5 @@
-/* Об'явлення функції
+/* 
+Об'явлена функція - Function Declaration
 
 function ім'я_функції(argument1, argument2) {
     // тіло функції
@@ -21,6 +22,8 @@ greetingUser('Simon');
 Створіть функцію, яка приймає число, додає до нього 5 і виводить результат на консоль
 */
 
+addFiveToNumber(500);
+
 function addFiveToNumber(number) {
     let result = number + 5;
     console.log(result);
@@ -37,3 +40,42 @@ function addTwoNumbers(num1, num2) {
 
 let functionResult = addTwoNumbers(2, 4);
 console.log(functionResult);
+
+
+
+
+// greet('John'); <<<--- не спрацює
+
+
+// .................................. Функціональні вирази
+
+/* Function Expression - Функціональний вираз
+
+const ім'я_функції = function (arg1, arg2) {
+    // тіло функції
+}
+
+ім'я_функції(аргу1, аргумент2)
+
+*/
+
+const greet = function(name) {
+    console.log('Привіт, ' + name);
+}
+
+greet('John');
+
+
+// ----------------------------------- Arrow Function - Cтрілкова функція
+/*
+const ім'я_функції = (arg1, arg2) => {
+    // тіло функції
+}
+
+*/
+
+const greetArrow = (name) => {
+    console.log('Привіт, ' + name);
+}
+
+greetArrow('Mike');
