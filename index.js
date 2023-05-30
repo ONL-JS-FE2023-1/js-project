@@ -1,67 +1,48 @@
-// let num1 = Number(prompt('Введіть перше число'));
-// let num2 = Number(prompt('Введіть друге число'));
+//let num1 = Number(prompt('Введіть перше число'));
+//let num2 = Number(prompt('Введіть друге число'));
 
-// function addTwoNumbers(arg1, arg2) {
-//     const result = arg1 + arg2;
-//     return result;
-// }
-
-// let result = addTwoNumbers(num1, num2);
-// console.log(result);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// task 1
-
-//const number1 = Number(prompt('Введіть перше число')); // String
-//const number2 = Number(prompt('Введіть друге число'));
-
-function getBigger(num1, num2) {
-    if(num1 > num2) {
-        return num1;
-    } else if(num2 > num1) {
-        return num2;
-    } else if(num1 === num2) {
-        return 'Числа рівні!'
-    } else {
-        return 'Сталась помилка!'
-    }
+function addTwoNumbers(arg1, arg2) {
+    const result = arg1 + arg2;
+    return result;
 }
 
-//const result = getBigger(number1, number2);
+//const result = addTwoNumbers(num1, num2);
 //console.log(result);
 
+const globalVariable = 10;
 
+console.log(globalVariable);
 
-
-// task 2
-
-function average(num1, num2) {
-    const avg = (num1 + num2) / 2;
-    return avg;
-    // return (num1 + num2) / 2;
+globalFunction()
+function globalFunction() {
+    // код функції
+    let num1 = 0;
+    console.log('Hi from global function!')
 }
 
+globalFunction()
 
-// task 3
+if(true) {
+    globalFunction();
+}
 
-function isEven(num) {
-    if(num % 2 === 0) {
-        return true; // return 'Число парне';
-    } else {
-        return false; // return 'Число непарне';
+function testFunction() {
+    const localVariable = 0; // локальна змінна
+
+    console.log(globalVariable);
+
+    if(true) {
+        const innerVariable = 30;
+        console.log(innerVariable); // Доступ до змінної innerVariable
+        console.log(globalVariable);
+        console.log(localVariable);
     }
+
+    console.log(innerVariable); // Помилка: innerVariable недоступна тут
+
+    return localVariable;
 }
+
+console.log(localVariable);
+
+// var -- deprecated
