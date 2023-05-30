@@ -1,29 +1,57 @@
-// бінарні - 2 операнди
-// унарні - 1 операнд
-// тернарний - 3 операнди
+//const value = Number(prompt('Введіть число'));
 
-/*
+// if(value % 5 === 0) {
+//     console.log('ділиться на 5');
+// } else if(value % 3 === 0) {
+//     console.log('ділиться на 3');
+// } else if(value % 2 === 0) {
+//     console.log('ділиться на 2');
+// } else {
+//     console.log('не ділиться на 5, 3 чи 2');
+// }
 
-Тернарний оператор
 
-const result = умова ? операнд1 : операнд2;
+/* 
 
-*/
+switch (вираз) {
+    case значення_виразу: робимо щось одне;
+    case значення2_виразу: робимо щось інше;
+    case значення3_виразу: робимо щось інше;
+    default: робимо щось, якщо інші значення не підійшли
+}
 
-const age = 5;
-const isAdult = age < 16 ? 'not adult' : 'adult'; // ... ? false : true
-console.log(isAdult);
-
-// Задача:
-
-/*
-
-1. Створіть булеву змінну isAuth, в якій самостійно визначте, чи авторизований користувач, чи ні. 
-Тобто привласніть цій змінній значення: або true або false.
-2. Створіть змінну viewMode, яка у випадку авторизованого користувача має містити рядок 'authMode',
-а у випадку неавторизованного - 'unAuth'
 
 */
 
-const isAuth = true;
-const viewMode = isAuth ? 'authMode' : 'unauth'; // isAuth === true
+const monthNumber = 1;
+const winter = 'winter';
+switch (monthNumber) {
+    case 1:
+    case 2:
+    case 12: {
+        console.log(winter);
+        break;
+    }
+    case 3:
+    case 4:
+    case 5: {
+        console.log('весна');
+        break;
+    }
+    case 6:
+    case 7:
+    case 8: {
+        console.log('літо');
+        break;
+    }
+    case 9:
+    case 10:
+    case 11: {
+        console.log('осінь');
+        break;
+    }
+    default: {
+        console.log('Введіть число від 1 до 12');
+        break;
+    }
+}
