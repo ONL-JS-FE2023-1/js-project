@@ -1,48 +1,15 @@
-//let num1 = Number(prompt('Введіть перше число'));
-//let num2 = Number(prompt('Введіть друге число'));
+// бінарні - 2 операнди
+// унарні - 1 операнд
+// тернарний - 3 операнди
 
-function addTwoNumbers(arg1, arg2) {
-    const result = arg1 + arg2;
-    return result;
-}
+/*
 
-//const result = addTwoNumbers(num1, num2);
-//console.log(result);
+Тернарний оператор
 
-const globalVariable = 10;
+const result = умова ? операнд1 : операнд2;
 
-console.log(globalVariable);
+*/
 
-globalFunction()
-function globalFunction() {
-    // код функції
-    let num1 = 0;
-    console.log('Hi from global function!')
-}
-
-globalFunction()
-
-if(true) {
-    globalFunction();
-}
-
-function testFunction() {
-    const localVariable = 0; // локальна змінна
-
-    console.log(globalVariable);
-
-    if(true) {
-        const innerVariable = 30;
-        console.log(innerVariable); // Доступ до змінної innerVariable
-        console.log(globalVariable);
-        console.log(localVariable);
-    }
-
-    console.log(innerVariable); // Помилка: innerVariable недоступна тут
-
-    return localVariable;
-}
-
-console.log(localVariable);
-
-// var -- deprecated
+const age = 5;
+const isAdult = age < 16 ? 'not adult' : 'adult'; // ... ? false : true
+console.log(isAdult);
