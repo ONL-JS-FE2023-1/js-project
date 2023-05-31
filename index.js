@@ -1,21 +1,34 @@
-let test;
+// Loops - Цикли
 
-function sum(a, b) {
-    test = 1;
-    return a + b;
+/*
+
+while (умова) {
+    код повторюється, поки умова = true
 }
 
-// Side effect - Побічний ефект
-
-console.log('Hello');
-alert();
-fetch(); // Запити на сервер або будь-які міжмережеві запити
-
-
-/* 
-
-Чиста функція (Pure function):
-1. Детермінована функція
-2. Не має побічних ефектів
-
 */
+
+// let iterator = 0;
+
+// /* Прохід циклу (коло) - ітерація */
+// while (iterator < 10) {
+//     console.log(iterator);
+//     iterator++;
+// }
+
+
+while (true) {
+    console.log('test');
+    break;
+}
+
+// Задача: зробити 10 повторів циклу, вивести на консоль парні значення лічильнику
+
+let iterator = 0;
+while(iterator < 10) {
+    if(iterator % 2 === 0) {
+        console.log(iterator);
+    }
+
+    iterator++;
+}
