@@ -1,39 +1,29 @@
-/*
+// task 1
 
-High Order Function - Функція вищого порядку - це функція, яка приймає іншу функцію в якості аргумента
+const userChoice = prompt('Оберіть напій:\n 1 - Сік,\n 2 - Вода,\n 3 - Кава,\n 4 - Чай,\n 5 - Лимонад');
 
-Callback - Колбек (функція зворотнього виклику) - це функція, ЯКУ передали як аргумент іншій функції
-
-*/
-
-function sum(a, b) {
-    return a + b;
+switch(userChoice) {
+    case '1': {
+        console.log('Сік');
+        break;
+    }
+    case '2': {
+        console.log('Вода');
+        break;
+    }
+    case '3': {
+        console.log('Кава');
+        break;
+    }
+    case '4': {
+        console.log('Чай');
+        break;
+    }
+    case '5': {
+        console.log('Лимонад');
+        break;
+    }
+    default: {
+        console.log('Оберіть щось із меню!');
+    }
 }
-
-function div(a, b) {
-    return a / b;
-}
-
-function sub(a, b) {
-    return a - b;
-}
-
-function multiply(a, b) {
-    return a * b;
-}
-
-function doingSomething(arg1, arg2, fun) { // HOF 
-    const result = fun(arg1, arg2);
-    return result;
-}
-
-doingSomething(2, 4, sum); // 6
-doingSomething(2, 4, sub); // -2
-
-
-// function яка сортує
-// HOF
-
-doingSomething(3, 5, function (a, b) {
-    return a*b;
-})
