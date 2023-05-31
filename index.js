@@ -1,23 +1,21 @@
+let test;
+
 function sum(a, b) {
+    test = 1;
     return a + b;
 }
 
-/*
+// Side effect - Побічний ефект
 
-Детермінова функція - функція, яка при одних і тих же аргументах повертає один і той самий результат
+console.log('Hello');
+alert();
+fetch(); // Запити на сервер або будь-які міжмережеві запити
+
+
+/* 
+
+Чиста функція (Pure function):
+1. Детермінована функція
+2. Не має побічних ефектів
 
 */
-
-sum(2, 2); // 4
-
-const variable = 5;
-
-function addToNumberSomeVariable(a) { 
-    return a + variable;
-}
-
-console.log(addToNumberSomeVariable(5));
-
-variable = 20;
-
-console.log(addToNumberSomeVariable(5));
