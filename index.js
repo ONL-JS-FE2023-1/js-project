@@ -32,3 +32,27 @@ while(iterator < 10) {
 
     iterator++;
 }
+
+/*
+
+password = qwerty1234;
+
+Запитуйте у користувача пароль через prompt, поки він не співпаде з тим, що лежить в змінній
+
+*/
+
+let pass = 'qwerty1234';
+
+// variant 1
+// let userPass = prompt('Введіть свій пароль');
+// while(userPass !== pass) {
+//     userPass = prompt('Невірний пароль! Введіть ще раз!');
+// }
+
+// variant 2
+while(true) {
+    let userInput = prompt('Введіть свій пароль');
+    if(userInput === pass) {
+        break;
+    }
+}
