@@ -1,83 +1,18 @@
-/*
-
-Objects
-
-Об'єкти мають:
-- властивості
-- методи
-
-*/
-
-let obj = {
-    color: 'red',
-    fontSize: 2,
-    'favorite food': 'fish'
-}
-
-/*
-
-Об'єкт Автобіль
-
-Властивості
-- марка
-- модель
-- рік випуску
-- швидкість
-
-Методи
-- прискоритись
-- гальмувати
-- змінити напрямок
-
-*/
-
-/*
-
-Об'єкт банківський рахунок
-
-Властивості
-- номер рахунку
-- баланс
-- власник
-- тип рахунку
-
-Методи
-- зняти гроші
-- поповнити рахунок
-- переказати кошти
-
-*/
-
-let bulb = {
-    lightness: 200,
-    power: '200W',
-    cap: 'small',
-    on: function() {
-        return 'The light on!'
+function factorial(num) {
+    if(num < 0) {
+        return null;
     }
+
+    if(num === 0 || num === 1) {
+        return 1;
+    }
+
+    let result = 1;
+    for(let i = 1; i <= num; i++) {
+        result *= i; // // result = result * i;
+    }
+    return result;
 }
 
-console.log(bulb.lightness);
-
-console.log(bulb.on());
-
-let dog = {
-    name: 'Tuzik',
-    'favorite food': 'meat'
-}
-
-console.log(dog['favorite food']);
-
-
-// Створення об'єктів
-
-// 1
-const cat = {
-
-} // літеральне створення об'єкта
-
-// 2
-const cat2 = Object(); // функція-конструктор
-
-// 3
-const cat3 = new Object(); // функція-конструктор з оператором new
+// 5! = 1*2*3*4*5
+// 7! = 1*2*3*4*5*6*7
