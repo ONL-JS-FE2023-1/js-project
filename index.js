@@ -1,4 +1,4 @@
-const cat = {
+const Murzik = {
     nickname: 'Murzik',
     '1color': 'Black',
     breed: 'Siam',
@@ -13,24 +13,8 @@ const cat = {
 }
 
 
-cat.age += 1; // cat.age = cat.age + 1;
-
-cat["1color"] = 'White';
-
-// ВИДАЛЕННЯ ВЛАСТИВОСТЕЙ / МЕТОДІВ
-
-cat.test = undefined; // BAD PRACTICE
-
-delete cat.test; // GOOD PRACTICE
-
-delete cat.sleep;
-
-cat.friend = 'Barsik';
-
-cat['favorite food'] = 'fish';
-
-cat.run = function() {
-    return 'I am running!';
+Murzik.friend = {
+    name: 'Barsik',
+    color: 'White',
+    age: 2
 }
-
-// =>
