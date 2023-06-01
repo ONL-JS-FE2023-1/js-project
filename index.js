@@ -1,22 +1,64 @@
 /*
 
-1. Ім'я з великої літери
-2. Функція-конструктор повинна виконуватись лише за допомогою операртора new
+Book
+
+- назва книги
+- автор
+- рік видання
+- ціна
+
+- метод визначення ціни зі знижкою
 
 */
 
-// Функція-конструктор
+function Book(name, author, year, price) {
+    this.name = name;
+    this.author = author;
+    this.year = year;
+    this.price = price;
 
-function Cat(name, color, breed, age) {
-    this.name = name; // this - посилання на ось цього новоствореного кота
-    this.color = color;
-    this.breed = breed;
-    this.age = age;
-    this.run = function() {
-        return this.name + ' is running!';
+    this.getName = function() {
+        return this.name;
+    }
+
+    this.getAuthor = function() {
+        return this.author;
+    }
+
+    this.getYear = function() {
+        return this.year;
+    }
+
+    this.getPrice = function() {
+        return this.price;
+    }
+
+    this.setName = function(newName) {
+        this.name = newName;
+        return this.name;
+        // this.getName();
+    }
+
+    this.setAuthor = function (newAuthor) {
+        this.author = newAuthor;
+        return this.author;
+    }
+
+    this.setYear = function(newYear) {
+        this.year = newYear;
+        return this.year;
+    }
+
+    this.setPrice = function(newPrice) {
+        this.price = newPrice;
+        return this.price;
+    }
+
+    this.calculateDiscountedPrice = function(discountPercentage) {
+        const discountedPrice = this.price - (this.price * (discountPercentage / 100));
+        return Number(discountedPrice.toFixed(2));
     }
 }
 
-const cat1 = new Cat('Bublik', 'red', 'siam', 2);
-const cat2 = new Cat('Murzik', 'black', 'siam', 4);
-const cat3 = new Cat('Barsik', 'white', null, 4);
+const book1 = new Book('Name 1', 'Author 1', 1951, 10.99);
+const book2 = new Book('The Catcher in the Rye', 'Salinger', 1952, 15);
