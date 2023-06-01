@@ -1,18 +1,26 @@
-function factorial(num) {
-    if(num < 0) {
-        return null;
-    }
-
-    if(num === 0 || num === 1) {
-        return 1;
-    }
-
-    let result = 1;
-    for(let i = 1; i <= num; i++) {
-        result *= i; // // result = result * i;
-    }
-    return result;
+const cat = {
+    nickname: 'Murzik',
+    '1color': 'Black',
+    breed: 'Siam',
+    age: 1,
+    test: 'test',
+    eat: function() {
+        return 'I am eating';
+    },
+    sleep: function() {
+        return 'I am sleeping'
+    },
 }
 
-// 5! = 1*2*3*4*5
-// 7! = 1*2*3*4*5*6*7
+
+cat.age += 1; // cat.age = cat.age + 1;
+
+cat["1color"] = 'White';
+
+// ВИДАЛЕННЯ ВЛАСТИВОСТЕЙ / МЕТОДІВ
+
+cat.test = undefined; // BAD PRACTICE
+
+delete cat.test; // GOOD PRACTICE
+
+delete cat.sleep;
