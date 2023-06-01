@@ -8,7 +8,7 @@ const cat = {
         return 'I am eating';
     },
     sleep: function() {
-        return 'I am sleeping'
+        return 'I am sleeping';
     },
 }
 
@@ -24,3 +24,13 @@ cat.test = undefined; // BAD PRACTICE
 delete cat.test; // GOOD PRACTICE
 
 delete cat.sleep;
+
+cat.friend = 'Barsik';
+
+cat['favorite food'] = 'fish';
+
+cat.run = function() {
+    return 'I am running!';
+}
+
+// =>
