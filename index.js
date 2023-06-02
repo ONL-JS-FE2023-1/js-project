@@ -1,64 +1,28 @@
 /*
 
-Book
+Функція-конструктор Country, яка приймає в якості аргументів:
 
-- назва книги
-- автор
-- рік видання
-- ціна
+Властивості:
+- назва країни
+- популяція
+- площа
 
-- метод визначення ціни зі знижкою
+Метод:
+- плотність населення: популяція цієї країни / площу цієї ж країни
 
 */
 
-function Book(name, author, year, price) {
+function Country(name, population, area) {
     this.name = name;
-    this.author = author;
-    this.year = year;
-    this.price = price;
+    this.population = population;
+    this.area = area;
 
-    this.getName = function() {
-        return this.name;
-    }
-
-    this.getAuthor = function() {
-        return this.author;
-    }
-
-    this.getYear = function() {
-        return this.year;
-    }
-
-    this.getPrice = function() {
-        return this.price;
-    }
-
-    this.setName = function(newName) {
-        this.name = newName;
-        return this.name;
-        // this.getName();
-    }
-
-    this.setAuthor = function (newAuthor) {
-        this.author = newAuthor;
-        return this.author;
-    }
-
-    this.setYear = function(newYear) {
-        this.year = newYear;
-        return this.year;
-    }
-
-    this.setPrice = function(newPrice) {
-        this.price = newPrice;
-        return this.price;
-    }
-
-    this.calculateDiscountedPrice = function(discountPercentage) {
-        const discountedPrice = this.price - (this.price * (discountPercentage / 100));
-        return Number(discountedPrice.toFixed(2));
+    this.getDensity = function() {
+        // const result = this.population / this.area; 
+        return this.population / this.area;
     }
 }
 
-const book1 = new Book('Name 1', 'Author 1', 1951, 10.99);
-const book2 = new Book('The Catcher in the Rye', 'Salinger', 1952, 15);
+const UK = new Country('United Kingdom', 67.33, 243610);
+
+console.log(UK.getDensity());
