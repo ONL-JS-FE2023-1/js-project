@@ -1,15 +1,15 @@
-// Задача: вивести користувачу привітання, залежно від значення, яке користувач ввів
+// Задача
+// Написати функцію, яка приймає об'єкт юзера і повертає:
+// Hello та ім'я юзера
 
-const greets = {
-    1: 'Hi',
-    2: 'Ya, whats up',
-    3: 'Hello',
-    4: 'Good morning'
+function greeting(user) {
+    return `Hello ${'name' in user ? user.name : 'Anonym'}`;
 }
 
-const valueFromUser = 15;
-console.log(greets[valueFromUser]);
+const user = {
+    name: 'John'
+}
 
-// in
-// 'key' in obj
-console.log('15' in greets);
+const user2 = {
+
+}
