@@ -6,19 +6,21 @@ const user = {
     avatar: 'https://.....'
 }
 
-//console.log(`${user.name} ${user.lastName} ${user.age} ${user["favorite color"]} ${user.avatar}`);
-
-// for...in
-// НЕ ЦЕЙ for(;;)
-
 /*
+Задача 1
 
-for(variable in object) {
-    // Код, що виконується для кожної властивості
+Написати функцію, яка приймає об'єкт і виводить всі значення всіх ключів і значень, оформлені у **
+
+obj = {
+    key1: 'value2'
 }
+
+/// "key1": *value2*
 
 */
 
-for (let key in user) {
-    console.log(`${key} !!!!!! ${user[key]}`); // key !!!!! value
+function task1(obj) {
+    for(let key in obj) {
+        console.log(`"${key}": *${obj[key]}*`);
+    }
 }
