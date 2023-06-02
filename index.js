@@ -1,15 +1,24 @@
-// Задача
-// Написати функцію, яка приймає об'єкт юзера і повертає:
-// Hello та ім'я юзера
-
-function greeting(user) {
-    return `Hello ${'name' in user ? user.name : 'Anonym'}`;
-}
-
 const user = {
-    name: 'John'
+    name: 'John',
+    lastName: 'Doe',
+    age: 35,
+    'favorite color': 'red',
+    avatar: 'https://.....'
 }
 
-const user2 = {
+//console.log(`${user.name} ${user.lastName} ${user.age} ${user["favorite color"]} ${user.avatar}`);
 
+// for...in
+// НЕ ЦЕЙ for(;;)
+
+/*
+
+for(variable in object) {
+    // Код, що виконується для кожної властивості
+}
+
+*/
+
+for (let key in user) {
+    console.log(`${key} !!!!!! ${user[key]}`); // key !!!!! value
 }
