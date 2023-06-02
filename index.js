@@ -7,5 +7,9 @@ const greets = {
     4: 'Good morning'
 }
 
-const valueFromUser = 3;
+const valueFromUser = 15;
 console.log(greets[valueFromUser]);
+
+// in
+// 'key' in obj
+console.log('15' in greets);
