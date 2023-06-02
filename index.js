@@ -1,20 +1,35 @@
+// [] - Обчислювальні властивості
 
-// У нас є функція
-function greetingUser(user) {
-    user.age = 15;
-    return `Hey ${user.name} ${user.surname}. You will be ${user.age + 1} next year`
-}
-
-// та у нас є об'єкт
 const user = {
-    name: 'John',
-    surname: 'Doe',
-    age: 35
+    'name': 'John',
+    'favorite color': 'red',
+    '0': 'value'
 }
+
 
 /*
-Задача:
-Написати функцію greetingUser таким чином, щоб вона привітала користувача та вказала,
-скільки йому років має виповнитись в наступному році
+
+Ключем може бути рядок або тип даних Symbol
 
 */
+
+// . - оператор доступу за ім'ям властивості
+
+user.name // 'John'
+// user.'favorite color' // syntax error
+// user.0 // syntax error
+
+// [] - Оператор доступу до обчислюваної властивості
+user['favorite color']; // 'red'
+user[0]; // 'value'
+
+
+
+
+const someObj = {
+    2: 10
+}
+
+// someObj.2 // syntax error
+someObj[2] // 10
+someObj['2'] // 10
