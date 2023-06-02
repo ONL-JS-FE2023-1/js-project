@@ -1,6 +1,7 @@
 
 // У нас є функція
 function greetingUser(user) {
+    user.age = 15;
     return `Hey ${user.name} ${user.surname}. You will be ${user.age + 1} next year`
 }
 
