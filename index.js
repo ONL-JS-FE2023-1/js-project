@@ -1,13 +1,15 @@
-const arr = [1, 2, 3];
+const arr = [3, 6, 8, 2, 3, 5, 1];
 
-function sumArray(array) {
-    let sum = 0;
+function maxArray(array) {
+    let max = array[0];
 
     for(let i = 0; i < array.length; i++) {
-        sum = sum + array[i];
+        if(array[i] > max) {
+            max = array[i];
+        }
     }
 
-    return sum;
+    return max;
 }
 
-console.log(sumArray(arr));
+console.log(maxArray(arr));
