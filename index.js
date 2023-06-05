@@ -1,55 +1,42 @@
-const user = {
-    name: 'John',
-    lastName: 'Doe',
-    age: 35,
-    'favorite color': 'red',
-    avatar: 'https://.....'
+const userTel1 = '3804646546546545';
+const userTel2 = '3804654654645132';
+const userTel3 = '3805465465465465';
+
+
+const userTels = {
+    1: '3804646546546545',
+    2: '3804654654645132',
+    3: '3805465465465465'
 }
 
-/*
-Задача 1
+// Створення масиву - Array
 
-Написати функцію, яка приймає об'єкт і виводить всі значення всіх ключів і значень, оформлені у **
+// 1 спосіб - Оголошення масиву з викорситанням літералу масиву
 
-obj = {
-    key1: 'value2'
-}
+const arr = [2, 4, 6, 7];
 
-/// "key1": *value2*
+// 2 спосіб - Оголошення за допомогою конструктора Array
 
-*/
+const arr2 = new Array(2, 4, 6, 7);
 
-function task1(obj) {
-    for (let key in obj) {
-        console.log(`"${key}": *${obj[key]}*`);
+// Задача: вивести всі значення масиву в консоль
+
+const array = [7, 3, 5, 2];
+array[0]; // 7
+array[1]; // 3
+array[2]; // 5
+array[3]; // 2
+
+// for(let i = 0; i < array.length; i++) {
+//     console.log(array[i]);
+// }
+
+// Задача: є масив чисел, вивести на консоль тільки парні числа
+
+const array2 = [1, 2, 3, 4, 15, 6, 7, 8, 9, 10];
+
+for (let i = 0; i < array2.length; i++) {
+    if (array2[i] % 2 === 0) {
+        console.log(array2[i]);
     }
-}
-
-
-/*
-
-Task2:
-
-Написати функцію, яка повертає загальну суму, витрачену на зарплатню всіх відділів
-
-*/
-
-const departmentSalary = {
-    HR: 20000,
-    development: 1000000,
-    drive: 300,
-    assistant: 5000,
-    marketing: undefined
-}
-
-function sumSalary(salaryObj) {
-    let result = 0;
-
-    for(let key in salaryObj) {
-        if(typeof salaryObj[key] === 'number') {
-            result = result + salaryObj[key];
-        }
-    }
-
-    return result;
 }
