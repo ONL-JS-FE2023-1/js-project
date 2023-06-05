@@ -1,42 +1,13 @@
-const userTel1 = '3804646546546545';
-const userTel2 = '3804654654645132';
-const userTel3 = '3805465465465465';
+const arr = [1, 2, 3];
 
+function sumArray(array) {
+    let sum = 0;
 
-const userTels = {
-    1: '3804646546546545',
-    2: '3804654654645132',
-    3: '3805465465465465'
-}
-
-// Створення масиву - Array
-
-// 1 спосіб - Оголошення масиву з викорситанням літералу масиву
-
-const arr = [2, 4, 6, 7];
-
-// 2 спосіб - Оголошення за допомогою конструктора Array
-
-const arr2 = new Array(2, 4, 6, 7);
-
-// Задача: вивести всі значення масиву в консоль
-
-const array = [7, 3, 5, 2];
-array[0]; // 7
-array[1]; // 3
-array[2]; // 5
-array[3]; // 2
-
-// for(let i = 0; i < array.length; i++) {
-//     console.log(array[i]);
-// }
-
-// Задача: є масив чисел, вивести на консоль тільки парні числа
-
-const array2 = [1, 2, 3, 4, 15, 6, 7, 8, 9, 10];
-
-for (let i = 0; i < array2.length; i++) {
-    if (array2[i] % 2 === 0) {
-        console.log(array2[i]);
+    for(let i = 0; i < array.length; i++) {
+        sum = sum + array[i];
     }
+
+    return sum;
 }
+
+console.log(sumArray(arr));
