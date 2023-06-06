@@ -1,16 +1,12 @@
-const user = {
-    fullname: 'Humpty Dumptu'
-}
+// splice
+// array.splice(start, deleteCount, item1, item2, itemN...)
+// start - з якого індексу починається зміна масиву
+// deleteCount - кількість елементів масиву, які потрібно видалити
+// починаючи з 3-го аргументу - ті елементи, які будуть встанвлені на місце видалених
 
-user.isBroken = false;
+const arr = [1, 2, 3, 4, 5];
+arr.splice(2, 1); // починаючи з второго індексу виріжи один елемент
+arr.splice(2); // починаючи зі второго індексу виріжи всі елементи до кінця масиву
 
-
-// string
-// number
-// boolean
-// null
-// undefined
-// symbol
-
-const egg = 'Humpty Dumptu';
-egg.isBroken = false;
+// Задача: вставити в масиві після другого індексу рядочок 'hello'
+arr.splice(2, 0, 'hello');
