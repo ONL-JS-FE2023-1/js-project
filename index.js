@@ -1,21 +1,19 @@
-// 1
+// forEach
+// array.forEach(callbackFunction)
 
-const arr1 = [1, 2, 3, 4, 5];
-arr1.splice(1, 2);
+function square(a) { // приймає число і виводить у консолі квадрат цього числа
+    console.log(a*a);
+}
 
-// 2
+const array = [1, 2, 3, 4, 5];
 
-const arr2 = [1, 2, 3 ,4];
-const newArray = arr2.slice(1);
+// array.forEach(square); // return undefined
 
-// 3
+array.forEach((item, index, array) => {
+    console.log(item * item)
+    console.log(index);
+    console.log(array);
+    console.log('--------------------------');
+})
 
-const arr3 = [1, 2, 3, 4, 5];
-arr3.splice(1, 0, 'w', 'tr-td');
-
-// variant 1
-arr3.splice(6, 0, 'vv');
-arr3.push('aa');
-
-// variant 2
-// arr3.splice(-1, 1, 'vv', 5, 'aa');
+// function declaration
