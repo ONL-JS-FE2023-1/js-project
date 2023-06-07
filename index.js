@@ -1,34 +1,18 @@
-// sort
-// array.sort([compareFunction])
+// filter
+// array.filter(callback)
 
-const array = [5, 3, 9, 21, 5, 1, 2, 4];
-array.sort(); // default sort
+const array = [5, 3, -9, -21, -5, 1, -1, -2];
 
-const arrayWords = ['bbb', 'abb', 'aaa', 'aba'];
-arrayWords.sort(); // default sort
+// Задача: отримати новий масив, який складається тільки з додатніх чисел
 
-function compareFunction(a, b) { // функція-компарартор
-    // if(b > a) {
-    //     return -1;
+function filterFunc(elem) {
+    // if(elem > 0) {
+    //     return true
     // } else {
-    //     return 1;
-    // } 
-    // сортування за зростанням (варіант 1)
+    //     return false
+    // }
 
-    // return a - b; // сортування у порядку зростання (варіант 2)
-
-    return b - a; // сортування у порядку спадання
+    return elem > 0
 }
 
-array.sort(compareFunction);
-
-/*
-
-returning:
--1 - спочатку a, потім b
-0 - елементи залишаються на місці
-1 - спочатку b, потім a
-
-*/
-
-// a і b - два сусідні елементи в масиві
+const filteredArray = array.filter(filterFunc);
