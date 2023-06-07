@@ -1,18 +1,16 @@
+// Чейнінг функцій
 
-// Задача: написати функцію, яка повертає суму БУДЬ-ЯКОЇ кількості переданих їй аргументів
+// Задача: новий масив, кожен елемент якого = елемент зі старого масиву * 2
 
-// Array.from(iterable)
+const array = [2, 3, 4, 5, 1, 2];
 
-function sum () {
-    const arrayArgs = Array.from(arguments); // нормальний масив з об'єкту arguments
-    let sum = 0;
-    for(let i = 0; i < arrayArgs.length; i++) {
-        sum += arrayArgs[i];
-    }
+const newArray = array.map((item) => {
+    return item * 2;
+}).reverse().join('<<--->>'); // chaining
 
-    console.log(sum / arrayArgs.length);
 
-    return sum;
-}
-
-console.log(sum(1, 2, 3));
+// forEach version
+// const newArrayVersion2 = [];
+// array.forEach((item) => {
+//     newArrayVersion2.push(item * 2);
+// })
