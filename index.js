@@ -1,18 +1,11 @@
-// filter
-// array.filter(callback)
+// reduce
+// зводить якусь кількість елементів до одного результуючого значення
+// array.reduce(callback, initialValue)
 
-const array = [5, 3, -9, -21, -5, 1, -1, -2];
+const array = [2, 3, 1];
 
-// Задача: отримати новий масив, який складається тільки з додатніх чисел
-
-function filterFunc(elem) {
-    // if(elem > 0) {
-    //     return true
-    // } else {
-    //     return false
-    // }
-
-    return elem > 0
+function reducer(accumulator, elem) {
+    return accumulator + elem
 }
 
-const filteredArray = array.filter(filterFunc);
+const sum = array.reduce(reducer, 0);
