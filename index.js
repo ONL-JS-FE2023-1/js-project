@@ -1,30 +1,18 @@
-const users = [
-    {
-        name: 'John',
-        lastName: 'Doe',
-        age: 18,
-        email: 'mail.com'
-    },
-    {
-        name: 'Jane',
-        lastName: 'Doe',
-        age: 20,
-        email: 'mail2.com'
-    },
-    {
-        name: 'Jake',
-        lastName: 'Doe',
-        age: 17,
-        email: 'mail3.com'
+
+// Задача: написати функцію, яка повертає суму БУДЬ-ЯКОЇ кількості переданих їй аргументів
+
+// Array.from(iterable)
+
+function sum () {
+    const arrayArgs = Array.from(arguments); // нормальний масив з об'єкту arguments
+    let sum = 0;
+    for(let i = 0; i < arrayArgs.length; i++) {
+        sum += arrayArgs[i];
     }
-]
 
+    console.log(sum / arrayArgs.length);
 
+    return sum;
+}
 
-const newUsersArray = users.map((item) => {
-    return {
-        fullname: `${item.name} ${item.lastName}`,
-        age: item.age,
-        email: item.email
-    }
-});
+console.log(sum(1, 2, 3));
