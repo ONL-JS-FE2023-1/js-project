@@ -1,49 +1,24 @@
-function MyArray() {
-    this.length = 0;
+function Stairs() {
+    this.currentStair = 0;
 }
 
-function MyProtoArray() {
-    this.push = function () {
-        for (let i = 0; i < arguments.length; i++) {
-            this[this.length] = arguments[i];
-            this.length++;
-        }
+Stairs.prototype = new LadderProto();
 
-        return this.length;
-    },
-    this.pop = function () {
-        if (this.length > 0) {
-            let lastItem = this[this.length - 1];
-            delete this[this.length - 1];
-            this.length--;
-            return lastItem;
-        }
-    },
-    this.forEach = function (callback) {
-        for (let i = 0; i < this.length; i++) {
-            callback(this[i], i, this);
+function LadderProto() {
+    this.up = function () {
+        this.currentStair++;
+    }
+
+    this.down = function () {
+        if (this.currentStair > 0) {
+            this.currentStair--;
         }
     }
-}
 
-MyArray.prototype = new MyProtoArray();
-
-// __proto__ - літеральне
-/*
-
-const cat = {
+    this.ShowStair = function () {
+        return this.currentStair;
+    }
 
 }
 
-*/
-
-const arr = new MyArray();
-
-arr.push(1, 2, 3, 4, 'test', 5, 6)
-
-arr.forEach((item) => {
-    console.log(item);
-})
-
-
-
+const ladder = new Stairs();
