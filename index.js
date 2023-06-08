@@ -42,3 +42,37 @@ arr.push(1, 2, 3, 4, 'test', 5, 6)
 arr.forEach((item) => {
     console.log(item);
 })
+
+
+
+// __proto__ // літеральний спосіб створення прототипу
+
+
+const cat = {
+    name: 'Barsik',
+    color: 'red',
+    age: 1,
+    test: 'test1'
+}
+
+const cat2 = {
+    name: 'Murzik',
+    color: 'black',
+    age: 5,
+    meow: function() {
+        console.log('meow meow meow')
+    }
+}
+
+
+const catMethods = { // прототип
+    run: function() {
+        console.log('Cat is running');
+    },
+    meow: function() {
+        console.log('Meow!');
+    }
+}
+
+cat.__proto__ = catMethods;
+cat2.__proto__ = catMethods;
