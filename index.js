@@ -1,34 +1,40 @@
-'use strict';
+/*
 
-// REST & SPREAD
+Задача:
 
+Вивести на консоль таблицю множення від 1 до 5 у вигляді:
 
-// REST - ...
-// ..., ..., ..., ..., -> []
+1x1 = 1
+1x2 = 2
+...
+2x1 = 2
+2x2 = 4
+...
+5x1 = 5
+5x2 = 10
+5x3
+5x4
+5x5
 
-const arrowSumReduce = (...restArray) => {
-    return restArray.reduce((accumulator, current) => {
-        return accumulator + current
-    }, 0)
+*/
+
+for(let i = 1; i <= 5; i++) { // 1
+    for(let j = 1; j <= 5; j++) { // 1..2..3..4..5
+        console.log(`${i} x ${j} = ${i * j}`);
+    }
 }
 
-// SPREAD 
-// [] -> ..., ..., ..., ...,
+const number = [[1,2,3], [4,5,6], [7,8,9]];
 
-const numbers = [1,2,3,4,5];
-console.log(arrowSumReduce(numbers)); // не спрацює
-console.log(arrowSumReduce(numbers[0], numbers[1], numbers[2], numbers[3], numbers[4]));
-console.log(arrowSumReduce(...numbers));
+function sumArray(array) {
+    let sum = 0;
+    for(let i = 0; i < array.length; i++) {
+        for(let j = 0; j < array[i].length; j++) {
+            sum += array[i][j];
+        }
+    }
 
+    return sum;
+}
 
-Math.min(2,3,1,5,4);
-//1
-Math.min([2,3,1,5,4]);
-//NaN
-const number = [2,3,1,5,4]
-//undefined
-Math.min(number)
-//NaN
-Math.min(...number);
-//1
-
+console.log(sumArray(number));
