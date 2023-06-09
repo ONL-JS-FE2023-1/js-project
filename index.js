@@ -24,4 +24,8 @@ const arrowSum = (...rest) => {
     return sum;
 }
 
-const arrowSumReduce = (...restArray) => restArray.reduce((accumulator, current) => accumulator + current);
+const arrowSumReduce = (...restArray) => {
+    return restArray.reduce((accumulator, current) => {
+        return accumulator + current;
+    }, 0);
+}
