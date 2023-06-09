@@ -1,24 +1,30 @@
-function Stairs() {
-    this.currentStair = 0;
+'use strict';
+
+console.log(this); // this вказує на глобальний об'єкт Window
+
+// Контекст виконання
+
+function test() { // Function Declaration
+    console.log(this); // this вказує на функцію
 }
 
-Stairs.prototype = new LadderProto();
+test();
 
-function LadderProto() {
-    this.up = function () {
-        this.currentStair++;
-    }
-
-    this.down = function () {
-        if (this.currentStair > 0) {
-            this.currentStair--;
-        }
-    }
-
-    this.ShowStair = function () {
-        return this.currentStair;
-    }
-
+const test2 = function () { // Function Expression
+    console.log(this); // this вказує на функцію
 }
 
-const ladder = new Stairs();
+test2();
+
+
+const arrow = () => { // Arrow Function не мають свого контексту виконання
+    console.log(this); // this вказує на глобальний об'єкт Window
+}
+
+arrow();
+
+function sum() {
+    const arrow = () => { // Arrow Function не мають свого контексту виконання
+        console.log(this); // this вказує на глобальний об'єкт Window
+    }
+}
