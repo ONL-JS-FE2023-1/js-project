@@ -1,34 +1,31 @@
 'use strict';
 
-const newspaper = {
-    title: 'Назва газети',
-    articles: [
-        {
-            author: '1 author',
-            date: '09.06.2023',
-            text: 'lorem1'
-        },
-        {
-            author: '2 author',
-            date: '09.06.2023',
-            text: 'lorem2'
-        },
-        {
-            author: '3 author',
-            date: '09.06.2023',
-            text: 'lorem3'
-        },
-        {
-            author: '4 author',
-            date: '09.06.2023',
-            text: 'lorem4'
-        },
-    ],
-    showArticles: function() {
-        this.articles.forEach((article, index) => {
-            console.log(`${this.title} ${index} - ${article.author}`); // Втрата контексту this
-        })
-    }
+function sum(a, b) {
+    return a + b;
 }
 
-newspaper.showArticles();
+const arrow = (a, b) => a + b; // a+b === {return a+b}
+
+
+const pow = x => x*x; // якщо 1 аргумент, то () можна опустити
+
+
+const t1 = function () {
+    console.log(arguments);
+}
+
+t1(1,2,3,4,5);
+
+const t2 = () => {
+    console.log(arguments); // Arrow Function не мають arguments
+}
+
+t2();
+
+/*
+
+1. Стрілочна функція не має власного контексту (її this буде вказувати на середовище її виконання)
+2. Стрілочна функція не може бути функцією-конструктором
+3. Стрілочна функція не має колекції arguments
+
+*/
