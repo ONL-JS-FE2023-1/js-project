@@ -1,31 +1,27 @@
 'use strict';
 
-function sum(a, b) {
-    return a + b;
+// REST & SPREAD
+
+
+// REST - ...
+// ..., ..., ..., ..., -> []
+
+// Задача: знайти суму двох елементів, а усі інші аргументи, які передали у функцію ззовні, при виклику - поклади у масив
+function sum(a, b, ...arrrayOfRestArguments) {
+    console.log(arrrayOfRestArguments);
+    return a+b;
 }
 
-const arrow = (a, b) => a + b; // a+b === {return a+b}
+sum(3, 4); // 7
+console.log(sum(1, 2, 3,4,5,6,7,89,2)); // 3
 
+const arrowSum = (...rest) => {
+    let sum = 0;
+    for(let i = 0; i < rest.length; i++) {
+        sum += rest[i];
+    }
 
-const pow = x => x*x; // якщо 1 аргумент, то () можна опустити
-
-
-const t1 = function () {
-    console.log(arguments);
+    return sum;
 }
 
-t1(1,2,3,4,5);
-
-const t2 = () => {
-    console.log(arguments); // Arrow Function не мають arguments
-}
-
-t2();
-
-/*
-
-1. Стрілочна функція не має власного контексту (її this буде вказувати на середовище її виконання)
-2. Стрілочна функція не може бути функцією-конструктором
-3. Стрілочна функція не має колекції arguments
-
-*/
+const arrowSumReduce = (...restArray) => restArray.reduce((accumulator, current) => accumulator + current);
