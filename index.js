@@ -1,47 +1,14 @@
-// task 1
+// const time1 = new Date();
 
-function truncate(str, strLength) {
-    if(str.length <= strLength) {
-        return str;
-    }
+console.time('operation');
 
-    const newStr = str.slice(0, strLength);
-    return newStr + '...';
+let sum = 0;
+for(let i = 0; i < 50000; i++) {
+    sum += i;
 }
 
-// task 2
+console.timeEnd('operation');
 
-// xxx
-// viagra -> Viagra -> VIAgra
+// const time2 = new Date();
 
-// v1
-
-function checkSpam(str) {
-    const lowStr = str.toLowerCase();
-    return lowStr.includes('viagra') || lowStr.includes('xxx');
-}
-
-// v2
-
-function checkSpam2(str) {
-    const spamArray = ['viagra', 'xxx', 'drugs'];
-
-    let flag = false;
-
-    for(let i = 0; i < spamArray.length; i++) {
-        if(str.toLowerCase().includes(spamArray[i])) {
-            flag = true;
-        }
-    }
-
-    return flag;
-}
-
-
-// task 3
-
-// str(reverse) === str
-
-function palindrom(str) {
-    return str.toLowerCase().split('').reverse().join('') === str.toLowerCase();
-}
+// console.log(time2.getTime() - time1.getTime());
