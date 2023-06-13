@@ -1,78 +1,46 @@
-// функція pow(x, n)
-// pow(2, 2) = 4 (2*2)
-// pow(2, 3) = 8 (2*2*2)
-// pow(2, 4) = 16 (2*2*2*2)
-
-// Ітеративне мислення
 
 /**
- * повертає x у n-й ступені
- * @param {number} x число, що потрібно піднести до степеня
- * @param {number} n степінь, натуральне число
- * @return {number} x піднесенне у n-нну степінь
+ * 
+ * @param {*} a 
+ * @param {*} b 
+ * @returns {number} Sum of a and b
+ * @throws {RangeError} If a or b is not a positive number
+ * @throws {TypeError} If a or b is not a number
  */
-function pow(x, n) {
-    let result = 1;
-
-    // множимо result на x n разів в циклі
-    for(let i = 0; i < n; i++) {
-        result *= x;
+function sumOfPositiveNumber(a, b) {
+    if(a < 0 || b < 0) {
+        // треба сповістити користувача, що число не підходить
+        const error = new RangeError('Число менше нуля!');
+        throw error; // return, тільки для помилок
+    }
+    if(typeof a !== 'number' || typeof b !== 'number') {
+        throw new TypeError('a && b мають бути числом!')
     }
 
-    return result;
-}
-
-// Рекурсивне мислення
-function powRecursive(x, n) {
-    if (n === 1) {
-        return x;
-    } else {
-        return x * powRecursive(x, n - 1);
-    }
+    return a + b;
 }
 
 
-/*
-                        / if n === 1   = x
-powRecursive(x, n) = 
-                        \ else    = x * powRecursive(x, n - 1);
+// throw <об'єкт помилки>
 
-*/
+/* try..catch
 
+try {
 
-/*
+} catch(error) {
 
-powRecursive(2, 4)
-
-1. pow(2, 4) = 2 * pow(2, 3)
-2. pow(2, 3) = 2 * pow(2, 2)
-3. pow(2, 2) = 2 * pow(2, 1)
-4. pow(2, 1) = 2
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-let counter = 0;
-function powRecursive(x, n) {
-    counter++;
-    return x * powRecursive(x, n - 1);
 }
 
+....
+
 */
+
+try {
+    sumOfPositiveNumber(2, -2);
+    // щось робимо, очікуючи, що може статись помилка
+} catch(error) {
+    console.log(error.message);
+    // обробка помилки (що ми робимо із помилкою?)
+}
+
+console.log('Usual code flow');
