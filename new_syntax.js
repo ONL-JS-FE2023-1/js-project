@@ -39,6 +39,12 @@ const us2 = new User('Jane', 'Doe', 65);
 
 
 // _
+/*
+
+Геттер - метод для отримання значення
+Сеттер - метод для встановлення значення
+
+*/
 
 const MIN_ZP = 6000;
 const WORK_DAYS = 21;
@@ -47,20 +53,11 @@ class Worker {
     constructor(name, lastName, rate = MIN_RATE, days = 0) {
         this.name = name;
         this.lastName = lastName;
-        this._rate = rate;
-        if(typeof rate !== 'number' || typeof days !== 'number') {
-            throw new TypeError('Rate and days must be a number!');
-        }
-        if (days < 0 || days > 31) {
-            throw new RangeError('Days must be in 0 to 31')
-        }
-        if(rate < 0) {
-            throw new RangeError('Rate must be a positive number')
-        }
+        this.rate = rate;
         this.days = days;
     }
 
-    setRate(value) {
+    set rate(value) {
         if(typeof value !== 'number') {
             throw new TypeError('Rate must be a number!');
         }
@@ -72,7 +69,7 @@ class Worker {
         this._rate = value;
     }
 
-    getRate() {
+    get rate() {
         return this._rate;
     }
 
@@ -82,6 +79,8 @@ class Worker {
 }
 
 const worker1 = new Worker('John', 'Doe', 300, 12);
+worker1.rate = 5000 // setter
+worker1.rate // getter
 
 
 // Параметри за замовченням 
