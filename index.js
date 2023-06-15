@@ -1,30 +1,27 @@
-class Test {
-    constructor(value1, value2) {
-        this.key1 = value1;
-        this.key2 = value2;
+class Animal {
+    constructor(color, nickname, breed) {
+        this.nickname = nickname;
+        this.color = color;
+        this.breed = breed;
     }
 
-    method() {
-        // todo
-    }
-
-    static newMethod2() {
-        // todo
-        // this в статичних методах не використовується
-        console.log('Hello from newMethod2!')
+    eat() {
+        return `${this.nickname} is eating`
     }
 }
 
-Test.newMethod = function(value) {
-    // щось робите
-    // this в статичних методах не використовується
-    console.log('Hello from newMethod!')
+const anim = new Animal('test', 'test', 'test');
+
+class Cat extends Animal {
+    constructor(color, nickname, breed, catIsGood) {
+        super(color, nickname, breed);
+
+        this.catIsGood = catIsGood;
+    }
+
+    sleep() {
+        return `${this.nickname} is sleeping`
+    }
 }
 
-const obj1 = new Test(); // створює нову сутність
-obj1.method(); // виклик методу екземпляра
-
-/* static methods */
-
-Test.newMethod();
-Test.newMethod2();
+const cat = new Cat('grey', 'Barsik', 'poroda...', true);
