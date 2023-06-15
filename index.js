@@ -1,67 +1,30 @@
-class EmailInbox {
-    constructor() {
-        this._emails = [];
+class Test {
+    constructor(value1, value2) {
+        this.key1 = value1;
+        this.key2 = value2;
     }
 
-    get emails() {
-        return this._emails;
+    method() {
+        // todo
     }
 
-    set emails(message) {
-        if(typeof message !== 'object') {
-            throw new TypeError('Message must be object')
-        }
-
-        this._emails.push(message);
+    static newMethod2() {
+        // todo
+        // this в статичних методах не використовується
+        console.log('Hello from newMethod2!')
     }
-
-    addEmail(subject, sender, message) {
-        const existingEmail = this.emails.filter(email => {
-            if(email.subject === subject) {
-                return true;
-            } else {
-                return false;
-            }
-        })
-        if(existingEmail.length > 0) {
-            throw new Error('Email with the same subject already exists')
-        }
-
-        // додаємо цей email до скриньки
-        const email = {
-            subject: subject,
-            sender: sender,
-            message: message
-        }
-
-        this.emails = email;
-    }
-
-    removeEmail(subject) {
-        const filteredEmails = this.emails.filter(email => {
-            if(email.subject !== subject) {
-                return true;
-            } else {
-                return false;
-            }
-        })
-
-        this._emails = filteredEmails;
-    }
-
-    // getEmails() {
-    //     return this.emails;
-    // }
 }
 
+Test.newMethod = function(value) {
+    // щось робите
+    // this в статичних методах не використовується
+    console.log('Hello from newMethod!')
+}
 
-const inbox = new EmailInbox();
+const obj1 = new Test(); // створює нову сутність
+obj1.method(); // виклик методу екземпляра
 
-inbox.addEmail('test1', 'test1@gmail.com', 'Test test test');
-inbox.addEmail('test2', 'test2@gmail.com', 'Test test test');
-inbox.addEmail('test3', 'test3@gmail.com', 'Test test test');
-// inbox.addEmail('test3', 'test@gmail.com', 'Test test test'); -> error
+/* static methods */
 
-inbox.removeEmail('test2');
-
-console.log(inbox.emails); // getEmails
+Test.newMethod();
+Test.newMethod2();
