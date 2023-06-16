@@ -1,4 +1,4 @@
-class Figure {
+class Figure { // абстрактний клас
     constructor(sideQuantity) {
         this.sideQuantity = sideQuantity;
     }
@@ -8,7 +8,7 @@ class Figure {
     }
 }
 
-class Triangle extends Figure {
+class Triangle extends Figure { // похідний клас
     constructor(a, b, angle) {
         super(3);
 
@@ -55,7 +55,7 @@ class Triangle extends Figure {
     }
 }
 
-class Square extends Figure {
+class Square extends Figure { // похідний клас
     constructor(a) {
         super(4);
         this.a = a;
@@ -75,3 +75,14 @@ class Square extends Figure {
     }
 }
 
+
+const sq = new Square(4);
+
+
+function getFigureArea(figure) {
+    if(figure instanceof Figure) {
+        return figure.getArea();
+    }
+
+    throw new TypeError('Параметр не є фігурою!');
+}
