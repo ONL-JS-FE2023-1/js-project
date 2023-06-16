@@ -1,115 +1,77 @@
-class Person {
-    constructor(fullName, birthYear, gender) {
-        this.fullName = fullName;
-        this.birthYear = birthYear;
-        this.gender = gender;
+class Figure {
+    constructor(sideQuantity) {
+        this.sideQuantity = sideQuantity;
     }
 
-    get fullName() {
-        return this._fullName;
-    }
+    getArea() {
 
-    set fullName(value) {
-        // тут можуть бути якісь перевірки перед встановленням значення
-        this._fullName = value; 
-    }
-
-    get birthYear() {
-        return this._birthYear;
-    }
-
-    set birthYear(value) {
-        // тут можуть бути якісь перевірки перед встановленням значення
-        this._birthYear = value;
-    }
-
-    get gender() {
-        return this._gender;
-    }
-
-    set gender(value) {
-        // тут можуть бути якісь перевірки перед встановленням значення
-        this._gender = value;
-    }
-
-    greeting() {
-        let prefix;
-        if(this.gender === 'male') {
-            prefix = 'Mr.';
-        } else if(this.gender === 'female') {
-            prefix = 'Mrs.';
-        } else {
-            prefix = prompt('How should we address you?');
-        }
-
-        return `Hello ${prefix} ${this.fullName}`
     }
 }
 
-class Student extends Person {
-    constructor(fullName, birthYear, gender, admissionYear, studentId, averageGrade) {
-        super(fullName, birthYear, gender);
+class Triangle extends Figure {
+    constructor(a, b, angle) {
+        super(3);
 
-        this.admissionYear = admissionYear;
-        this.studentId = studentId;
-        this.averageGrade = averageGrade;
+        this.a = a;
+        this.b = b;
+        this.angle = angle;
     }
 
-    get admissionYear() {
-        return this._admissionYear;
+    get a() {
+        return this._a;
     }
 
-    set admissionYear(value) {
-        // тут можуть бути якісь перевірки перед встановленням значення
-        this._admissionYear = value;
-    }
-
-    get studentId() {
-        return this._studentId;
-    }
-
-    set studentId(value) {
-        // тут можуть бути якісь перевірки перед встановленням значення
-        this._studentId = value;
-    }
-
-    get averageGrade() {
-        return this._averageGrade;
-    }
-
-    set averageGrade(value) {
-        // тут можуть бути якісь перевірки перед встановленням значення
-        this._averageGrade = value;
-    }
-
-    isExcellentStudent() {
-        return this.averageGrade >= 90;
-    }
-
-    static calculateAverageGrade(studentsArray) {
-        if(studentsArray.length === 0) {
-            return 0;
+    set a(value) {
+        if(value < 0) {
+            throw new RangeError('Side cannot be less than 0');
         }
 
-        const totalGrade = studentsArray.reduce((accum, student) => accum + student.averageGrade, 0);
+        this._a = value;
+    }
 
-        return totalGrade / studentsArray.length;
+    get b() {
+        return this._b;
+    }
+
+    set b(value) {
+        if(value < 0) {
+            throw new RangeError('Side cannot be less than 0');
+        }
+
+        this._b = value;
+    }
+
+    get angle() {
+        return this._angle;
+    }
+
+    set angle(value) {
+        //
+        this._angle = value;
+    }
+
+    getArea() {
+        return this.a * this.b * Math.sin(this.angle)
     }
 }
 
-const person = new Person('John Doe', 1965, 'male');
-person.greeting()
-// 'Hello Mr. John Doe'
+class Square extends Figure {
+    constructor(a) {
+        super(4);
+        this.a = a;
+    }
 
+    get a() {
+        return this._a;
+    }
 
-const student1 = new Student('Jane Doe', 1990, 'female', 2019, 'A12345', 95);
-student1.greeting();
-//'Hello Mrs. Jane Doe'
-student1.isExcellentStudent();
-// true
+    set a(value) {
+        //
+        this._a = value;
+    }
 
-const student2 = new Student('Bob McCormick', 1999, 'male', 2018, 'B12345', 65);
-const student3 = new Student('Emily Johnson', 1994, 'non binary', 2021, 'C12345', 75);
+    getArea() {
+        return this.a * this.a;
+    }
+}
 
-const students = [student1, student2, student3];
-const averageGrade = Student.calculateAverageGrade(students);
