@@ -1,61 +1,115 @@
-class User {
-    constructor(name, surname, age) {
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
+class Person {
+    constructor(fullName, birthYear, gender) {
+        this.fullName = fullName;
+        this.birthYear = birthYear;
+        this.gender = gender;
     }
 
-    getFullName() {
-        return `${this.name} ${this.surname}`
-    }
-}
-
-class Moderator extends User {
-    constructor(name, surname, age) {
-        super(name, surname, age);
+    get fullName() {
+        return this._fullName;
     }
 
-    createPost(header, text) {
-        console.log('Post created')
+    set fullName(value) {
+        // тут можуть бути якісь перевірки перед встановленням значення
+        this._fullName = value; 
     }
 
-    removePost(postId) {
-        console.log('Post removed')
+    get birthYear() {
+        return this._birthYear;
     }
 
-    ban(userId) {
-        console.log('User is banned')
-    }
-}
-
-class Admin extends Moderator {
-    constructor(name, surname, isAdmin) {
-        super(name, surname, null);
-
-        this.isAdmin = isAdmin;
+    set birthYear(value) {
+        // тут можуть бути якісь перевірки перед встановленням значення
+        this._birthYear = value;
     }
 
-    createPost() {
-        console.log('Not allowed')
+    get gender() {
+        return this._gender;
     }
 
-    removePost() {
-        console.log('Not allowed')
+    set gender(value) {
+        // тут можуть бути якісь перевірки перед встановленням значення
+        this._gender = value;
     }
 
-    setModerator(userId) {
-        console.log('set moderator')
-    }
+    greeting() {
+        let prefix;
+        if(this.gender === 'male') {
+            prefix = 'Mr.';
+        } else if(this.gender === 'female') {
+            prefix = 'Mrs.';
+        } else {
+            prefix = prompt('How should we address you?');
+        }
 
-    deleteModerator(userId) {
-        // варіант 1: видаляємо профіль модератора
-        // варіант 2: знімаємо з модератора його роль модератора
-        console.log('delete moderator')
+        return `Hello ${prefix} ${this.fullName}`
     }
 }
 
-const us1 = new User('John', 'Doe', 59);
+class Student extends Person {
+    constructor(fullName, birthYear, gender, admissionYear, studentId, averageGrade) {
+        super(fullName, birthYear, gender);
 
-const mod = new Moderator('Alex', 'Krane',40);
+        this.admissionYear = admissionYear;
+        this.studentId = studentId;
+        this.averageGrade = averageGrade;
+    }
 
-const adm = new Admin('Jane', 'Doe', true);
+    get admissionYear() {
+        return this._admissionYear;
+    }
+
+    set admissionYear(value) {
+        // тут можуть бути якісь перевірки перед встановленням значення
+        this._admissionYear = value;
+    }
+
+    get studentId() {
+        return this._studentId;
+    }
+
+    set studentId(value) {
+        // тут можуть бути якісь перевірки перед встановленням значення
+        this._studentId = value;
+    }
+
+    get averageGrade() {
+        return this._averageGrade;
+    }
+
+    set averageGrade(value) {
+        // тут можуть бути якісь перевірки перед встановленням значення
+        this._averageGrade = value;
+    }
+
+    isExcellentStudent() {
+        return this.averageGrade >= 90;
+    }
+
+    static calculateAverageGrade(studentsArray) {
+        if(studentsArray.length === 0) {
+            return 0;
+        }
+
+        const totalGrade = studentsArray.reduce((accum, student) => accum + student.averageGrade, 0);
+
+        return totalGrade / studentsArray.length;
+    }
+}
+
+const person = new Person('John Doe', 1965, 'male');
+person.greeting()
+// 'Hello Mr. John Doe'
+
+
+const student1 = new Student('Jane Doe', 1990, 'female', 2019, 'A12345', 95);
+student1.greeting();
+//'Hello Mrs. Jane Doe'
+student1.isExcellentStudent();
+// true
+
+const student2 = new Student('Bob McCormick', 1999, 'male', 2018, 'B12345', 65);
+const student3 = new Student('Emily Johnson', 1994, 'non binary', 2021, 'C12345', 75);
+
+const students = [student1, student2, student3];
+const averageGrade = Student.calculateAverageGrade(students);
