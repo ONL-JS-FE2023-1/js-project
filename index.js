@@ -1,88 +1,45 @@
-class Figure { // абстрактний клас
-    constructor(sideQuantity) {
-        this.sideQuantity = sideQuantity;
-    }
+// Клас Собака +
+// Клас Кіт +
+// Фабрика - створює екземпляри класу Собака і класу Кіт +
 
-    getArea() {
+// Абстрактний клас або інтерфейс
+class Animal {
+    makeSound() {
 
     }
 }
 
-class Triangle extends Figure { // похідний клас
-    constructor(a, b, angle) {
-        super(3);
-
-        this.a = a;
-        this.b = b;
-        this.angle = angle;
+// Конкретний клас для собаки
+class Dog extends Animal {
+    makeSound() {
+        console.log('Гав-гав!')
     }
+}
 
-    get a() {
-        return this._a;
+// Конкретний клас для кота
+class Cat extends Animal {
+    makeSound() {
+        console.log('Мяу-мяу!')
     }
+}
 
-    set a(value) {
-        if(value < 0) {
-            throw new RangeError('Side cannot be less than 0');
+// Фабричний клас, який створює об'єкти
+class AnimalFactory {
+    createAnimal(type) {
+        switch(type) {
+            case 'dog': return new Dog();
+            case 'cat': return new Cat();
+            default: throw new TypeError('Невідомий тип тварини!')
         }
-
-        this._a = value;
-    }
-
-    get b() {
-        return this._b;
-    }
-
-    set b(value) {
-        if(value < 0) {
-            throw new RangeError('Side cannot be less than 0');
-        }
-
-        this._b = value;
-    }
-
-    get angle() {
-        return this._angle;
-    }
-
-    set angle(value) {
-        //
-        this._angle = value;
-    }
-
-    getArea() {
-        return this.a * this.b * Math.sin(this.angle)
     }
 }
 
-class Square extends Figure { // похідний клас
-    constructor(a) {
-        super(4);
-        this.a = a;
-    }
+const factory = new AnimalFactory();
 
-    get a() {
-        return this._a;
-    }
+// Задача: створити Собаку
+const dog = factory.createAnimal('dog');
+dog.makeSound();
 
-    set a(value) {
-        //
-        this._a = value;
-    }
-
-    getArea() {
-        return this.a * this.a;
-    }
-}
-
-
-const sq = new Square(4);
-
-
-function getFigureArea(figure) {
-    if(figure instanceof Figure) {
-        return figure.getArea();
-    }
-
-    throw new TypeError('Параметр не є фігурою!');
-}
+// Задача: створити Кота
+const cat = factory.createAnimal('cat');
+cat.makeSound();
