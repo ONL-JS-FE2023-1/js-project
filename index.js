@@ -1,103 +1,101 @@
+class MyArray {
+    constructor() {
+        this.length = 0;
+    }
+
+    static isMyArray(obj) {
+        return obj instanceof MyArray;
+    }
+
+    push() {
+        for (let i = 0; i < arguments.length; i++) {
+            this[this.length] = arguments[i];
+            this.length++;
+        }
+
+        return this.length;
+    }
+    pop() {
+        if (this.length > 0) {
+            let lastItem = this[this.length - 1];
+            delete this[this.length - 1];
+            this.length--;
+            return lastItem;
+        }
+    }
+    forEach(callback) {
+        for (let i = 0; i < this.length; i++) {
+            callback(this[i], i, this);
+        }
+    }
+
+    map(callback) {
+        const newArr = new MyArray();
+        for (let i = 0; i < this.length; i++) {
+            newArr.push(callback(this[i], i, this));
+        }
+
+        return newArr;
+    }
+
+    unshift(...value) {
+        // створюємо пустий масив
+        // на початок пустого масиву (push) додалюємо value
+        // масив, на якому викликали unshift, додаємо його всі елементи до кінця пустого масиву
+
+        const temp = new MyArray();
+        temp.push(...value);
+
+        this.length += value.length;
+
+        for(let i = 0; i < this.length - 1; i++) {
+            temp.push(this[i]);
+        }
+
+        for(let i = 0; i < this.length; i++) {
+            this[i] = temp[i];
+        }
+
+        return this.length;
+    }
+}
+
+const arrMy = new MyArray();
+arrMy.push(1,2,34,5);
+
 /*
 
-Уявіть, що у вас є ферма, на якій проживають різні види тварин. У цій фермі є свійські тварини, такі як корови і кози, а також домашні тварини, такі як кошки і собаки.
-
-У кожної тварини на фермі можуть бути свої діти, і кожен з цих дітей також може мати свою власну кількість дітей.
-
-Завдання полягає в наступному:
-
-1. Створити класи для всіх видів тварин і додати можливість встановлювати кількість дітей для кожної тварини.
-2**. Реалізувати функцію, яка підраховує загальну кількість тварин на фермі, включаючи дітей і дітей дітей.
-
-Ви можете вирішити це завдання, використовуючи такі кроки:
-
-1. Створити порожній масив ferma, який буде зберігати всі тварини на фермі.
-2. Встановити кількість ітерацій, наприклад, змінну N, яка визначає кількість тварин, які ви хочете створити.
-3. Зробити N ітерацій.
-4. На кожній ітерації створити нову тварину (корову, козу, кота або собаку) і встановити для неї певну кількість дітей.
-5. Додати створену тварину в масив ferma.
-
+arrMy
+MyArray {length: 0}length: 0[[Prototype]]: Object
+arrMy.push(1,2,3,4,5)
+5
+arrMy
+MyArray {0: 1, 1: 2, 2: 3, 3: 4, 4: 5, length: 5}0: 11: 22: 33: 44: 5length: 5[[Prototype]]: Object
+arrMy.pop()
+5
+arrMy
+MyArray {0: 1, 1: 2, 2: 3, 3: 4, length: 4}0: 11: 22: 33: 4length: 4[[Prototype]]: Object
+arrMy.forEach((item) => {
+    console.log(item);
+})
+VM4884:2 1
+VM4884:2 2
+VM4884:2 3
+VM4884:2 4
 
 */
 
-// фабричний клас для створення тварин
-class AnimalsFactory {
-    static createAnimal(type) {
-        switch(type) {
-            case 'cow': return new Cow();
-            case 'goat': return new Goat();
-            case 'dog': return new Dog();
-            case 'cat': return new Cat();
-            default: throw new TypeError('Невідомий тип тварини!');
-        }
-    }
-}
+/*
 
-// Абстрактний клас, або інтерфейс
-class Animal {
-    constructor() {
-        this.children = [];
-    }
+arrMy.push(1,2,3,4,5)
+5
+arrMy
+MyArray {0: 1, 1: 2, 2: 3, 3: 4, 4: 5, length: 5}
+arrMy.map((item) => item*2)
+MyArray {0: 2, 1: 4, 2: 6, 3: 8, 4: 10, length: 5}0: 21: 42: 63: 84: 10length: 5[[Prototype]]: Object
+const test = arrMy.map((item) => item*2);
+undefined
+test
+MyArray {0: 2, 1: 4, 2: 6, 3: 8, 4: 10, length: 5}
 
-    static createAnimals(type, numAnimals, numChildren, numGrandchildren) {
-        const animals = [];
-        for(let i = 0; i < numAnimals; i++) {
-            const animal = AnimalsFactory.createAnimal(type);
-            for(let j = 0; j < numChildren; j++) {
-                const child = AnimalsFactory.createAnimal(type);
-                animal.children.push(child);
-                for(let k = 0; k < numGrandchildren; k++) {
-                    const grandchild = AnimalsFactory.createAnimal(type);
-                    child.children.push(grandchild);
-                }
-            }
-            animals.push(animal);
-        }
-        return animals;
-    }
-
-    static countAnimals(animals) {
-        let count = animals.length;
-        for(let i = 0; i < animals.length; i++) {
-            count += Animal.countChildren(animals[i]);
-        }
-        return count;
-    }
-
-    static countChildren(animal) {
-        let count = animal.children.length;
-        for(let i = 0; i < animal.children.length; i++) {
-            count += Animal.countChildren(animal.children[i]);
-        }
-        return count;
-    }
-
-}
-
-// Конкретні класи собаки, кішки, кози і корови
-class Cow extends Animal {
-    // Тут можуть бути додаткові властивості та/або методи для конкретних тварин
-}
-
-class Goat extends Animal {
-    // Тут можуть бути додаткові властивості та/або методи для конкретних тварин
-}
-
-class Dog extends Animal {
-    // Тут можуть бути додаткові властивості та/або методи для конкретних тварин
-}
-
-class Cat extends Animal {
-    // Тут можуть бути додаткові властивості та/або методи для конкретних тварин
-}
-
-const farm = [...Animal.createAnimals('cow', 5, 5, 5), ...Animal.createAnimals('goat', 5, 5, 5), ...Animal.createAnimals('dog', 5, 5, 5), ...Animal.createAnimals('cat', 5, 5, 5)];
-
-// farm.push(...Animal.createAnimals('cow', 1, 1, 1)); // 3
-// farm.push(...Animal.createAnimals('goat', 1, 1, 1)); // 6
-// farm.push(...Animal.createAnimals('dog', 1, 1, 1)); // 9
-// farm.push(...Animal.createAnimals('cat', 1, 1, 1)); // 12
-
-
-console.log(farm);
-console.log(`Загальна кількість тварин на фермі ${Animal.countAnimals(farm)} тварин.`);
+*/
