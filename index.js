@@ -1,52 +1,56 @@
-function linearSearch(array, searchValue) { // лінійна складність
-    for(let i = 0; i < array.length; i++) {
-        if(array[i] === searchValue) {
-            return i;
+class Stack {
+    // push - додає елемент на вершину стеку
+    // pop - повертає верхній елемент після видалення зі стеку
+    // isEmpty - повертає true, якщо стек пустий
+    // pick - повертає нам останній елемент, але нічого не робить із ним і не видаляє зі стеку
+
+    constructor(maxSize) {
+        this._maxSize = maxSize;
+        this._size = 0;
+    }
+
+    get isEmpty() {
+        return this._size === 0;
+    }
+
+    get size() {
+        return this._size;
+    }
+
+    get maxSize() {
+        return this._maxSize;
+    }
+
+    set size(value) {
+        throw new Error('Access denied!');
+    }
+
+    set maxSize(value) {
+        throw new Error('Access denied!');
+    }
+
+    push(value) {
+        if(this.size >= this.maxSize) {
+            throw new Error('Stack overflow');
+        }
+
+        this[`_${this.size}`] = value;
+        this._size++;
+        return this.size;
+    }
+
+    pop() {
+        if(this.size > 0) {
+            const lastItem = this[`_${this.size - 1}`];
+            delete this[`_${this.size - 1}`];
+            this._size--;
+            return lastItem;
         }
     }
 
-    return -1;
+    pick() {
+        return this[`_${this.size - 1}`];
+    }
 }
 
-// Квадратична
-
-function multyTable(limit) {
-    const table = [];
-    for(let i = 1; i <= limit; i++) {// 1
-        for(let j = 1; j <= limit; j++) { // 1..2..3..4..limit
-            table.push(`${i}*${j} = ${i*j}`);
-        }
-    }
-
-    return table;
-}
-
-// Логарифмічна
-
-const arr = [2,3,4,5,6,7,8,9,10];
-
-function binarySearch(array, whatToFind) { 
-
-    // NEED CODE REVIEW!
-
-    if((whatToFind > array[array.length - 1]) || (whatToFind < array[0])) {
-        return -Infinity; 
-    }
-
-    let start = 0; // початковий індекс масиву
-    let end = array[array.length - 1];
-    let middle = Math.round(start + end / 2);
-
-    while(true) { // нескінченний цикл
-        if(array[middle] === whatToFind) {
-            return middle;
-        }
-        if(array[middle] < whatToFind) { // середній елемент менший за шуканий
-            start = middle;
-            middle = Math.ceil((start + end) / 2);
-        } else { // середній елемент більший за шуканий
-            end = middle;
-            middle = Math.ceil((start + end) / 2);
-        }
-    }
-}
+const myStack = new Stack(4);
