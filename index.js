@@ -53,4 +53,58 @@ class Stack {
     }
 }
 
-const myStack = new Stack(4);
+// Реалізувати функцію, яка перевіряє баланс дужок у виразі
+
+// (a + b) * (c - d)     // true
+// (a + b) * (c - d))    // false
+// (a + b) * (c - d      // false
+// {}
+// []
+// ()
+
+function checkBalancedBrackets(expression) {
+    const stack = new Stack(15);
+
+    for(let i = 0; i < expression.length; i++) {
+        const char = expression[i];
+
+        if(char === '(' || char === '[' || char === '{') {
+            stack.push(char)
+        } else if(char === ')' || char === ']' || char === '}') {
+            if(stack.isEmpty) {
+                return false;
+            }
+            
+            const top = stack.pop();
+
+            if(
+                (char === ')' && top !== '(') ||
+                (char === ']' && top !== '[') ||
+                (char === '}' && top !== '{')
+            ) {
+                return false; // НЕвідповідність типів дужок
+            }
+        }
+    }
+
+    return stack.isEmpty; // true -> Джужки збалансовані, якщо стек порожній
+}
+
+/*
+
+
+checkBalancedBrackets('(a + b) * (c - d');
+false
+checkBalancedBrackets('(a + b) * (c - d)');
+true
+checkBalancedBrackets('(a + b) * (c - d))');
+false
+checkBalancedBrackets('(a + b) * ((c - d)');
+false
+checkBalancedBrackets('[a + b] * (c - d)');
+true
+checkBalancedBrackets('[a + b) * (c - d]');
+false
+
+
+*/
