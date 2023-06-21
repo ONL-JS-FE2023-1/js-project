@@ -1,12 +1,24 @@
-const schedule = new Map();
+const user = {
+    name: 'Alex',
+    firstName: 'Doe',
+    id: 1
+}
 
-schedule.set('Понеділок', ['Математика', 'Фізика']);
-schedule.set('Вівторок', ['Англійська мова', 'Історія']);
-schedule.set('Середа', ['Хімія', 'Географія']);
-schedule.set('Четвер', ['Література', 'Біологія']);
-schedule.set('П\'ятниця', ['Фізкультура', 'Інформатика']);
+const user2 = {
+    name: 'John',
+    firstName: 'Doe',
+    id: 2
+}
 
-// Додавання нових днів до розкладу => set
-// Мені потрібно отримати розклад за якийсь певний день => get
-// Чи є розклад на середу? => has
-// Яка кількість днів занять в рокзладі? => size
+const johnMessages = ['Hello!', 'How are you?'];
+const alexMessages = ['Hi!', 'I`m fine!'];
+
+
+const messageMap = new Map();
+messageMap.set(user.id, alexMessages);
+messageMap.set(user2.id, johnMessages);
+
+function createMessage(userId, newMessage, messageMap) {
+    const userMessages = messageMap.get(userId);
+    userMessages.push(newMessage);
+}
