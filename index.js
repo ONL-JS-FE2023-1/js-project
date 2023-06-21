@@ -1,35 +1,38 @@
-/* Черга - Queue
+/*
 
+Map (Карта, Мапа)
 
-1. Enqueue - вставляє елемент в кінець черги
-2. Dequeue - видаляє елемент з початку черги
+Зберігає пари ключ-значення
+Має розмір (size)
+
+Відмінності від звичайного об'єкта:
+1. Запам'ятовує елементи в тому порядку, в якому ми їх додаємо
+2. Ключем може бути будь-який тип даних: String, Number, Boolean, BigInt, Function, Object
+(Об'єкти і функція передаються за посиланням)
+
+Ключ має бути унікальним
 
 */
 
-class Queue {
-    constructor() {
-        this._head = 0;
-        this._tail = 0;
-    }
 
-    get size() {
-        return this._tail - this._head;
-    }
+const vocalbuary = new Map();
 
-    enque(value) {
-        this[this._tail] = value;
-        this._tail++;
-        return this.size;
-    }
+vocalbuary.set('cat', 'кіт');
+vocalbuary.set('dog', 'собака');
+vocalbuary.set('eat', 'їсти');
 
-    deque() {
-        if (this.size > 0) {
-            const firstItem = this[this._head];
-            delete this[this._head++];
-            return firstItem;
+// Word word word word
+
+function translater(str, vocalbuary) {
+    const arrayWords = str.toLowerCase().trim().split(' ');
+
+    const translatedArray = arrayWords.map((word) => {
+        if(vocalbuary.has(word)) {
+            return vocalbuary.get(word);
         }
-        throw new Error('Queue is empty!')
-    }
-}
 
-const queue = new Queue();
+        return word;
+    })
+
+    return translatedArray.join(' ');
+}
