@@ -1,38 +1,12 @@
-/*
+const schedule = new Map();
 
-Map (Карта, Мапа)
+schedule.set('Понеділок', ['Математика', 'Фізика']);
+schedule.set('Вівторок', ['Англійська мова', 'Історія']);
+schedule.set('Середа', ['Хімія', 'Географія']);
+schedule.set('Четвер', ['Література', 'Біологія']);
+schedule.set('П\'ятниця', ['Фізкультура', 'Інформатика']);
 
-Зберігає пари ключ-значення
-Має розмір (size)
-
-Відмінності від звичайного об'єкта:
-1. Запам'ятовує елементи в тому порядку, в якому ми їх додаємо
-2. Ключем може бути будь-який тип даних: String, Number, Boolean, BigInt, Function, Object
-(Об'єкти і функція передаються за посиланням)
-
-Ключ має бути унікальним
-
-*/
-
-
-const vocalbuary = new Map();
-
-vocalbuary.set('cat', 'кіт');
-vocalbuary.set('dog', 'собака');
-vocalbuary.set('eat', 'їсти');
-
-// Word word word word
-
-function translater(str, vocalbuary) {
-    const arrayWords = str.toLowerCase().trim().split(' ');
-
-    const translatedArray = arrayWords.map((word) => {
-        if(vocalbuary.has(word)) {
-            return vocalbuary.get(word);
-        }
-
-        return word;
-    })
-
-    return translatedArray.join(' ');
-}
+// Додавання нових днів до розкладу => set
+// Мені потрібно отримати розклад за якийсь певний день => get
+// Чи є розклад на середу? => has
+// Яка кількість днів занять в рокзладі? => size
