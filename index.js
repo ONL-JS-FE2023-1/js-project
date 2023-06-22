@@ -1,90 +1,66 @@
-// Конструктор Map при створенні об'єкта очікує кортежі 
-// (у випадку, якщо ви хочете проініціалузвати Map чимось при створенні)
-const map1 = new Map([['key1', 'value1'], ['key2', 'value2'], ['key3', 'value3']]);
+function checkAngram(str1, str2) {
+    str1 = str1.toLowerCase();
+    str2 = str2.toLowerCase();
+
+    const map1 = new Map(); // Мапа для першого рядка
+    const map2 = new Map(); // Мапа для другого рядка
+
+    // Проходимося по першому рядку і додаємо символи до map1
+    for(let char of str1) {
+        map1.set(char, map1.has(char) ? map1.get(char) + 1 : 1);
+    }
+
+    // Проходимося по другому рядку і додаємо символи до map2
+    for(let char of str2) {
+        map2.set(char, map2.has(char) ? map2.get(char) + 1 : 1);
+    }
+
+    /*
+    мара
+
+    мапа1:
+    м - 1
+    а - 2
+    р - 1
+
+    рама
+
+    мапа2:
+    р - 1
+    а - 2
+    м - 1
+
+    */
+
+    if(map1.size !== map2.size) {
+        return false; // Якщо розміри мап не співпадають, рядки точно не є анаграмами
+    }
+
+    // порівнюємо вміст мап
+    map1.forEach((value, key) => {
+        if(map2.get(key) !== value) {
+            return false; // Якщо значення не співпадають, рядки не є анаграмами
+        }
+    })
+
+    return true; // Якщо всі перевірки пройдені, рядки є анаграмами
+}
 
 /*
 
-const entriesIterator = map1.entries()
-undefined
-entriesIterator
-MapIterator {'key1' => 'test', 'key2' => 'value2', 'key3' => 'value3'}[[Entries]]0: {"key1" => "test"}1: {"key2" => "value2"}2: {"key3" => "value3"}[[Prototype]]: Map Iterator[[IteratorHasMore]]: true[[IteratorIndex]]: 0[[IteratorKind]]: "entries"
-entriesIterator.next().value
-(2) ['key1', 'test']
-entriesIterator.next().value
-(2) ['key2', 'value2']
-entriesIterator.next().value
-(2) ['key3', 'value3']
-entriesIterator.next().value
-undefined
+checkAngram('рама', 'мара');
+true
+
+
+checkAngram('test', 'setT');
+true
+
+
+checkAngram('local', 'vogue');
+false
+
+
+checkAngram('str', 'casesssss');
+false
 
 */
-
-/*
-
-const keysIterator = map1.keys();
-undefined
-keysIterator
-MapIterator {'key1', 'key2', 'key3'}[[Entries]]0: "key1"1: "key2"2: "key3"[[Prototype]]: Map Iterator[[IteratorHasMore]]: true[[IteratorIndex]]: 0[[IteratorKind]]: "keys"
-keysIterator.next().value
-'key1'
-keysIterator.next().value
-'key2'
-keysIterator.next().value
-'key3'
-keysIterator.next().value
-undefined
-
-*/
-
-/*
-
-const valuesIterator = map1.values();
-undefined
-valuesIterator
-MapIterator {'value1', 'value2', 'value3'}[[Entries]]0: "value1"1: "value2"2: "value3"[[Prototype]]: Map Iterator[[IteratorHasMore]]: true[[IteratorIndex]]: 0[[IteratorKind]]: "values"
-valuesIterator.next().value
-'value1'
-valuesIterator.next().value
-'value2'
-valuesIterator.next().value
-'value3'
-valuesIterator.next().value
-undefined
-
-*/
-
-map1.forEach((value, key, map) => {
-    console.log(`Value: ${value}, Key: ${key}`)
-})
-
-/*
-
-const map1 = new Map();
-map1.set('bar', 'foo');
-
-console.log(map1.delete('bar'));
-// Expected result: true
-// True indicates successful removal
-
-*/
-
-/*
-
-const map1 = new Map();
-
-map1.set('bar', 'baz');
-map1.set(1, 'foo');
-
-console.log(map1.size);
-// Expected output: 2
-
-map1.clear();
-
-console.log(map1.size);
-// Expected output: 0
-
-*/
-
-console.log(...map1)
-console.log(...map1.keys())
-console.log(...map1.values())
