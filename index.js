@@ -1,66 +1,33 @@
-function checkAngram(str1, str2) {
-    str1 = str1.toLowerCase();
-    str2 = str2.toLowerCase();
+/*
 
-    const map1 = new Map(); // Мапа для першого рядка
-    const map2 = new Map(); // Мапа для другого рядка
+Set (множина) - структура, де зберігаються унікальні значення
 
-    // Проходимося по першому рядку і додаємо символи до map1
-    for(let char of str1) {
-        map1.set(char, map1.has(char) ? map1.get(char) + 1 : 1);
-    }
+const set = new Set();
 
-    // Проходимося по другому рядку і додаємо символи до map2
-    for(let char of str2) {
-        map2.set(char, map2.has(char) ? map2.get(char) + 1 : 1);
-    }
+Set.prototype.add(value) - додає value у кінець Set
 
-    /*
-    мара
+Set.prototype.has(value) - перевіряє, чи є value у Set (булеве значення)
 
-    мапа1:
-    м - 1
-    а - 2
-    р - 1
+Set.prototype.delete(value) - видаляє value з Set
 
-    рама
 
-    мапа2:
-    р - 1
-    а - 2
-    м - 1
+*/
 
-    */
-
-    if(map1.size !== map2.size) {
-        return false; // Якщо розміри мап не співпадають, рядки точно не є анаграмами
-    }
-
-    // порівнюємо вміст мап
-    map1.forEach((value, key) => {
-        if(map2.get(key) !== value) {
-            return false; // Якщо значення не співпадають, рядки не є анаграмами
-        }
-    })
-
-    return true; // Якщо всі перевірки пройдені, рядки є анаграмами
-}
 
 /*
 
-checkAngram('рама', 'мара');
-true
-
-
-checkAngram('test', 'setT');
-true
-
-
-checkAngram('local', 'vogue');
-false
-
-
-checkAngram('str', 'casesssss');
-false
+Задача:
+Дано масив: [2, 3, 3, 5, 6, 6, 6, 6, 7, 7, 1, 1, 1]
+Повернути масив без повторень
 
 */
+
+const arrayWithDoubles = [2, 3, 3, 5, 6, 6, 6, 6, 7, 7, 1, 1, 1];
+
+function arrWithoutDoubles(arr) {
+    const set = new Set(arr);
+    const arrFromSet = [...set.values()];
+    return arrFromSet;
+}
+
+// const arrWithoutDoublesV2 = arr => [...new Set(arr)];
