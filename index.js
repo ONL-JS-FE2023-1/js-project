@@ -1,38 +1,59 @@
-const monitor = {
-    sizes: {
-        height: {
-            value: 30,
-            scale: 'cm'
+/* Замикання (closure) */
+
+// scope - лексична область видимості
+
+let value = 10; // глобальна область видимості
+
+function log() {
+    console.log('LOG function', value);
+}
+
+function wrapper() {
+    let value = 20; // локальна область видимості
+    console.log('WRAPPER function', value);
+
+    return function log() {
+        console.log('LOG function', value);
+    }
+}
+
+// log();
+//wrapper();
+
+// log(); // 10
+// wrapper(); // 20
+
+
+/* */
+
+// function counter() {
+//     let i = 0;
+//     i++;
+//     return i;
+// }
+
+/////////
+
+function makeCounter() {
+    let i = 0;
+    return function() {
+        return ++i;
+    }
+}
+
+function makeCounter2() {
+    let counter = 0;
+    return {
+        increment() {
+            return ++counter;
         },
-        width: {
-            value: 50,
-            scale: 'cm'
+        decrement() {
+            return --counter;
         }
-    },
-    brightness: 750,
-    refresh: {
-        value: 144,
-        scale: 'Ggrc'
-    },
-    color: 'white',
-    resolution: '4K'
+    }
 }
 
-/*
-
-Написати функцію, яка приймає об'єкт монітораю, 
-виймає з нього розміри ширини і висоти і на їх основі повертає розмір діагоналі 
+const fnObj = makeCounter2();
 
 
-формула розрахунку для діагоналі = корінь квадратний(від суми квадратів сторін)
-
-d = Math.sqrt(a*a + b*b)
-
-*/
-
-function getDiagonal({sizes: {height: {value: a}, width: {value: b}}}) {
-    return Math.sqrt(a*a + b*b);
-}
-
-
-console.log(getDiagonal(monitor));
+//////
