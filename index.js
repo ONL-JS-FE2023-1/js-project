@@ -1,25 +1,38 @@
-// Деструктуризація масивів
-
-const arr = [1,2,3,4,5,6];
-
-const [firstElement, secondElement, ...restOfArr] = arr;
-
-// Деструктуризація Map (впорядкована колекція)
-
-const map = new Map([[1,2], [3,4]]);
-
-const [map1, map2] = map;
-
-/* Деструктуризація вхідних праметрів */
-
-function getFullName({firstName, lastName, ...rest}) { // все інше, окрім firstName, lastName ігнорується
-    console.log(rest);
-    return `${firstName} ${lastName}`;
+const monitor = {
+    sizes: {
+        height: {
+            value: 30,
+            scale: 'cm'
+        },
+        width: {
+            value: 50,
+            scale: 'cm'
+        }
+    },
+    brightness: 750,
+    refresh: {
+        value: 144,
+        scale: 'Ggrc'
+    },
+    color: 'white',
+    resolution: '4K'
 }
 
-getFullName({
-    firstName: 'Alex',
-    lastName: 'Doe',
-    phone: '12345',
-    email: 'test@gmail.com'
-});
+/*
+
+Написати функцію, яка приймає об'єкт монітораю, 
+виймає з нього розміри ширини і висоти і на їх основі повертає розмір діагоналі 
+
+
+формула розрахунку для діагоналі = корінь квадратний(від суми квадратів сторін)
+
+d = Math.sqrt(a*a + b*b)
+
+*/
+
+function getDiagonal({sizes: {height: {value: a}, width: {value: b}}}) {
+    return Math.sqrt(a*a + b*b);
+}
+
+
+console.log(getDiagonal(monitor));
